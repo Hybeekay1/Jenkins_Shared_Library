@@ -5,7 +5,7 @@ def call(String ImageName, String HubUser){
     usernameVariable: 'USER')]) {
     sh "docker login -u '$USER' -p '$PASS'"
 } 
-        sh "docker image push ${ImageName} ${HubUser}/${ImageName}:latest"
+        sh "docker image push ${HubUser}/${ImageName}:latest"
  }
 
 
