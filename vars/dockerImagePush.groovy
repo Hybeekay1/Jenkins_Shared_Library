@@ -1,10 +1,12 @@
-def call()
-withCredentials([usernamePassword(
+def call(String ImageName, String HubUser){
+    withCredentials([usernamePassword(
     credentialsId: 'docker-api',
     passwordVariable: 'PASS',
     usernameVariable: 'USER')]) {
-    // some block
-}
+    sh "docker login -u '$USER' -p '$PASS'"
+} 
+        sh "docker image push ${ImageName} ${HubUser}/${ImageName}:latest"
+ }
 
 
 //def call(String aws_account_id, String region, String ecr_repoName){
